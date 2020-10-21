@@ -33,7 +33,34 @@ function comecarEtapa() {
 }
 
 function atualizaInterface() {
-  alert("Voto feito com sucesso!");
+  let etapa = etapas[etapaAtual];
+  let candidato = etapa.candidatos.filter((item) => {
+    if (item.numero === numero) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+
+  if (candidato.length > 0) {
+    candidato = candidato[0];
+    seuVotoPara.style.display = "block";
+    desc.innerHTML = `Nome: ${candidato.nome}<br/>Partido: ${candidato.partido}`;
+    aviso.style.display = "block";
+
+    let fotosHtml = "";
+    for (let i in candidato.fotos) {
+      fotosHtml += `<div class="d-1-img"><img src="assets/images/${candidato.fotos[i].url}" alt="" />${candidato.fotos[i].legenda}</div>`;
+    }
+
+    lateral.innerHTML = fotosHtml;
+  } else {
+    seuVotoPara.style.display = "block";
+    aviso.style.display = "block";
+    desc.innerHTML = '<div class="aviso--grande pisca">VOTO NULO</div>';
+  }
+
+  console.log("Candidato", candidato);
 }
 
 function clicou(n) {
