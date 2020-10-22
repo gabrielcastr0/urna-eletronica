@@ -170,3 +170,12 @@ body {
   font-weight: bold;
   padding-top: 10px;
 }
+
+.aviso--gigante {
+  font-size: 70px;
+  font-weight: bold;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
